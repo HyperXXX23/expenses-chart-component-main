@@ -33,11 +33,10 @@ const chartsData = `
 
 const jsonData = JSON.parse(chartsData);
 
-console.log(jsonData);
-//Max amount of data
+
+//Max amount
 let maxNum = 0;
 for (let i = 0; i < jsonData.length; i++) {
-    // console.log(jsonData[i]['amount']);
     if (jsonData[i]['amount'] > maxNum) {
         maxNum = jsonData[i]['amount'];
     }
@@ -48,20 +47,36 @@ const percent = (partialValue, totalValue) => {
     return (100 * partialValue) / totalValue
 }
 
+//select charts bars container
 const chartCont = document.querySelector('.chart-bars');
 
-chartCont.innerHTML = `
-    <div class='bar-otro' style="height: ${percent(jsonData[0]['amount'], maxNum)}%;" ></div>
-    <div class='bar-otro' style="height: ${percent(jsonData[1]['amount'], maxNum)}%;" ></div>
-    <div class='bar-otro' style="height: ${percent(jsonData[2]['amount'], maxNum)}%;" ></div>
-    <div class='bar-otro' style="height: ${percent(jsonData[3]['amount'], maxNum)}%;" ></div>
-    <div class='bar-otro' style="height: ${percent(jsonData[4]['amount'], maxNum)}%;" ></div>
-    <div class='bar-otro' style="height: ${percent(jsonData[5]['amount'], maxNum)}%;" ></div>
-    <div class='bar-otro' style="height: ${percent(jsonData[6]['amount'], maxNum)}%;" ></div>
-`;
+const luis = '$';
 
-console.log(chartCont);
-//calcular porciento
-// function percentage(partialValue, totalValue) {
-//     return (100 * partialValue) / totalValue;
-// }
+//render each chart bar and the highest paint of cyan
+const renderChart = jsonData.map(item => {
+    if (item['amount'] === maxNum) {
+        return `
+            <div class="bar-cont">
+                <div class="bar-price" style="bottom: ${item['amount'] * 2}%;">
+                    <p>${luis}${Math.round(item['amount'] * 100) / 100}</p>
+                </div>
+                <div class="bar" style="height: ${percent(item['amount'], maxNum)}%; background-color: var(--cyan);"></div>
+            </div>
+        `
+    }
+    else {
+        return `
+            <div class="bar-cont">
+                <div class="bar-price" style="bottom: ${item['amount'] * 2}%;">
+                    <p>${luis}${Math.round(item['amount'] * 100) / 100}</p>
+                </div>
+                <div class="bar" style="height: ${percent(item['amount'], maxNum)}%;"></div>
+            </div>
+        `
+    }
+});
+
+
+chartCont.innerHTML = renderChart.join(' ');
+
+

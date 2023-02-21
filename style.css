@@ -105,6 +105,8 @@ main h2 {
 main .chart {
     display: flex;
     flex-direction: column;
+    /* border: 1px solid red; */
+    margin-top: 10px;
 }
 
 main .chart .chart-bars {
@@ -114,45 +116,65 @@ main .chart .chart-bars {
     height: 200px;
 }
 
-main .chart .chart-bars>* {
+main .chart .chart-bars .bar-cont {
+    width: 100%;
+    height: 100%;
+    margin: 0 8px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    cursor: pointer;
+}
+
+
+main .chart .chart-bars .bar {
     height: 100%;
     width: 100%;
     cursor: pointer;
-    margin: 0 8px;
+    /* margin: 0 8px; */
     /* border: 1px solid red; */
     border-radius: 5px;
     background-color: var(--soft-red);
 }
 
-main .chart .chart-bars .bar-mon {
-    height: 30%;
+main .chart .chart-bars .bar-cont {
+    position: relative;
+    display: flex;
+    flex-direction: column;
 }
 
-main .chart .chart-bars .bar-tue {
-    height: 60%;
+main .chart .chart-bars .bar-price {
+    background-color: var(--dark-brown);
+    width: 140%;
+    height: 38px;
+    z-index: 1000;
+    bottom: 100%;
+    left: -20%;
+    position: absolute;
+    border-radius: 5px;
+    color: var(--cream);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    opacity: 0;
+    transition: all 0.3s ease-in;
 }
 
-main .chart .chart-bars .bar-wed {
-    height: 100%;
-    background-color: var(--cyan);
+
+main .chart .chart-bars .bar-cont:hover .bar-price {
+    opacity: 1;
 }
 
-main .chart .chart-bars .bar-thu {
-    height: 48%;
+main .chart .chart-bars .bar {
+    transition: all .3s ease-in-out;
 }
 
-main .chart .chart-bars .bar-fri {
-    height: 80%;
+main .chart .chart-bars .bar:hover {
+    filter: brightness(1.2);
 }
-
-main .chart .chart-bars .bar-sat {
-    height: 95%;
-}
-
-main .chart .chart-bars .bar-sun {
-    height: 30%;
-}
-
 
 
 
@@ -226,3 +248,5 @@ main .down-cont .down-rigth p:first-child {
 main .down-cont .down-rigth p:last-child {
     color: var(--medium-brown);
 }
+
+@media screen and (max-width: 600px) {}
