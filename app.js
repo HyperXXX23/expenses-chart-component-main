@@ -58,7 +58,7 @@ const renderChart = jsonData.map(item => {
         return `
             <div class="bar-cont">
                 <div class="bar-price" style="bottom: ${item['amount'] * 2}%;">
-                    <p>${luis}${Math.round(item['amount'] * 100) / 100}</p>
+                    <p style="padding: 0 5px;">${luis}${Math.round(item['amount'] * 100) / 100}</p>
                 </div>
                 <div class="bar" style="height: ${percent(item['amount'], maxNum)}%; background-color: var(--cyan);"></div>
             </div>
@@ -67,7 +67,7 @@ const renderChart = jsonData.map(item => {
     else {
         return `
             <div class="bar-cont">
-                <div class="bar-price" style="bottom: ${item['amount'] * 2}%;">
+                <div class="bar-price" style="bottom: ${item['amount'] * 2}%; padding: 0 15px;">
                     <p>${luis}${Math.round(item['amount'] * 100) / 100}</p>
                 </div>
                 <div class="bar" style="height: ${percent(item['amount'], maxNum)}%;"></div>

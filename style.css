@@ -141,15 +141,16 @@ main .chart .chart-bars .bar-cont {
     position: relative;
     display: flex;
     flex-direction: column;
+    cursor: pointer;
 }
 
 main .chart .chart-bars .bar-price {
     background-color: var(--dark-brown);
-    width: 140%;
+    width: 146%;
     height: 38px;
     z-index: 1000;
     bottom: 100%;
-    left: -20%;
+    left: -23%;
     position: absolute;
     border-radius: 5px;
     color: var(--cream);
@@ -249,4 +250,9 @@ main .down-cont .down-rigth p:last-child {
     color: var(--medium-brown);
 }
 
-@media screen and (max-width: 600px) {}
+@media screen and (max-width: 600px) {
+
+    main .chart .chart-bars .bar-price {
+        font-size: 10px;
+    }
+}
